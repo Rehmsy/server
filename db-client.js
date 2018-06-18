@@ -3,9 +3,9 @@ const pg = require('pg');
 const Client = pg.Client;
 
 // send back db int as javascript int
-types.setTypeParser(20, parseFloat);
+//types.setTypeParser(20, parseFloat);
 // send back db float as javascript float
-types.setTypeParser(1700, parseFloat);
+//types.setTypeParser(1700, parseFloat);
 
 const client = new Client(DATABASE_URL);
 client.connect()
