@@ -1,10 +1,10 @@
 require('dotenv').config();
 const client = require('../db-client');
 
-const users = require('../data/users.json');
-const events = require('../data/events.json');
-const contacts = require('../data/contacts.json');
-const companies = require('../data/companies.json');
+const users = require('../data/users2.json');
+const events = require('../data/events2.json');
+const contacts = require('../data/contacts2.json');
+const companies = require('../data/companies2.json');
 
 Promise.all(
   companies.map(company => {
