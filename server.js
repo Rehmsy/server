@@ -38,6 +38,23 @@ app.get('/api/events/:id', (req, res, next) => {
     .catch(next);
 });
 
+// ROUTE: Delete event
+app.delete('/api/events/:id', (req, res, next) => {
+  client.query(`
+    DELETE FROM contacts WHERE event_id=$1;
+  `,
+  [req.params.id]
+  ).then(() => {
+    client.query(`
+      DELETE FROM events WHERE id=$1;
+    `,
+    [req.params.id]
+    ).then(() => {
+      res.send({ removed: true });
+    })
+      .catch(next);
+  });
+});
 
 // ROUTE:  User Sign-Up
 app.post('/api/auth/signup', (req, res, next) => {
