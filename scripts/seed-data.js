@@ -55,15 +55,14 @@ Promise.all(
                 name,
                 email,
                 other,
-                description,
-                created,
+                notes,
                 user_id,
                 event_id,
                 company_id
             )
-            VALUES ($1, $2, $3, $4, $5, $6, $7, $8);
+            VALUES ($1, $2, $3, $4, $5, $6, $7);
         `,
-        [contact.name, contact.email, contact.other, contact.description, contact.created, contact.user_id, contact.event_id, contact.company_id]
+        [contact.name, contact.email, contact.other, contact.notes, contact.user_id, contact.event_id, contact.company_id]
         ).then(result => result.rows[0]);
       })
     );

@@ -2,7 +2,7 @@
   {
     "name": "Charlie Skinner",
     "email": "charlie@hbosthenewsroom.com",
-    "description": "One of the funniest guys in the room.",
+    "notes": "One of the funniest guys in the room.",
     "user_id": 1,
     "event_id": 1,
     "company_id": 3
@@ -10,7 +10,7 @@
   {
     "name": "Louis The Dog",
     "email": "louisthedog@someemailaddress.com",
-    "description": "Woof Woof",
+    "notes": "Woof Woof",
     "user_id": 1,
     "event_id": 2,
     "company_id": 1
@@ -18,7 +18,7 @@
   {
     "name": "Journey The Dog",
     "email": "journeythedog@someemailaddress.com",
-    "description": "Woof woof woof",
+    "notes": "Woof woof woof",
     "user_id": 2,
     "event_id": 3,
     "company_id": 1
@@ -26,7 +26,7 @@
   {
     "name": "Charizard",
     "email": "charizard@someemailaddress.com",
-    "description": "Bit of a pyro",
+    "notes": "Bit of a pyro",
     "user_id": 2,
     "event_id": 4,
     "company_id": 2
