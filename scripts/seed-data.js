@@ -1,19 +1,35 @@
+require('dotenv').config();
 const client = require('../db-client');
-const users = require('./users.json');
-const events = require('./events.json');
-const contacts = require('./contacts.json');
-const companies = require('./companies.json');
+
+const users = require('../data/users.json');
+const events = require('../data/events.json');
+const contacts = require('../data/contacts.json');
+const companies = require('../data/companies.json');
 
 Promise.all(
-  users.map(user => {
+  companies.map(company => {
     return client.query(`
-        INSERT INTO quadrants (email, password)
-        VALUES ($1, $2);
+        INSERT INTO companies (
+          name
+        )
+        VALUES ($1);
     `,
-    [user.email, user.password]
+    [company.name]
     ).then(result => result.rows[0]);
   })
 )
+  .then(() => {
+    return Promise.all(
+      users.map(user => {
+        return client.query(`
+            INSERT INTO users (email, password)
+            VALUES ($1, $2);
+        `,
+        [user.email, user.password]
+        ).then(result => result.rows[0]);
+      })
+    );
+  })
   .then(() => {
     return Promise.all(
       events.map(event => {
@@ -52,22 +68,11 @@ Promise.all(
       })
     );
   })
-  .then(() => {
-    return Promise.all(
-      companies.map(company => {
-        return client.query(`
-            INSERT INTO companies (
-              name
-            )
-            VALUES ($1);
-        `,
-        [company.name]
-        ).then(result => result.rows[0]);
-      })
-    );
-  })
   .then(
     () => console.log('seed data load successful'),
     err => console.error(err)
   )
   .then(() => client.end());
+
+
+  

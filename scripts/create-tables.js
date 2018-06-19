@@ -14,6 +14,10 @@ client.query(`
       date DATE NOT NULL,
       description VARCHAR(2048)
     );
+    CREATE TABLE IF NOT EXISTS companies (
+      id SERIAL PRIMARY KEY,
+      name VARCHAR(256)
+    );
     CREATE TABLE IF NOT EXISTS contacts (
       id SERIAL PRIMARY KEY,
       name VARCHAR(256),
@@ -24,10 +28,6 @@ client.query(`
       user_id INTEGER NOT NULL REFERENCES users(id),
       event_id INTEGER NOT NULL REFERENCES events(id),
       company_id INTEGER NOT NULL REFERENCES companies(id)
-    );
-    CREATE TABLE IF NOT EXISTS companies (
-      id SERIAL PRIMARY KEY,
-      name VARCHAR(256)
     )
 `)
   .then(

@@ -1,11 +1,9 @@
 [
   {
-    "id": 1,
     "email": "login1@email.com",
     "password": "password"
   },
   {
-    "id": 2,
     "email": "login2@email.com",
     "password": "password"
   }
