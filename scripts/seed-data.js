@@ -37,12 +37,12 @@ Promise.all(
             INSERT INTO events (
               user_id, 
               name, 
-              date, 
+              event_date, 
               description
             )
             VALUES ($1, $2, $3, $4);
         `,
-        [event.user_id, event.name, event.date, event.description]
+        [event.user_id, event.name, event.event_date, event.description]
         ).then(result => result.rows[0]);
       })
     );

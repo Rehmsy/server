@@ -11,7 +11,7 @@ client.query(`
       id SERIAL PRIMARY KEY,
       user_id INTEGER NOT NULL REFERENCES users(id),
       name VARCHAR(256) NOT NULL,
-      date DATE NOT NULL,
+      event_date DATE NOT NULL,
       description VARCHAR(2048)
     );
     CREATE TABLE IF NOT EXISTS companies (
