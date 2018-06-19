@@ -1,24 +1,24 @@
 [
   {
-    "date": "2018-06-18",
+    "event_date": "2018-06-18",
     "name": "Women Who Code",
     "description": "An organization that envisions a world where women are proportionally represented as technical leaders, executives, founders, VCs, board members, and software engineers.",
     "user_id": 1
   },
   {
-    "date": "2018-06-19",
+    "event_date": "2018-06-19",
     "name": "Network Your Network",
     "description": "Some networking event that aims to network your network through networking.",
     "user_id": 1
   },
   {
-    "date": "2018-07-20",
+    "event_date": "2018-07-20",
     "name": "Portland Code Project",
     "description": "Your basic coding project here in Portland.",
     "user_id": 2
   },
   {
-    "date": "2018-09-21",
+    "event_date": "2018-09-21",
     "name": "Code Love - A Networking Event",
     "description": "A local group of enthusiasts who aim to share their love for coding in the Portland area.",
     "user_id": 2
