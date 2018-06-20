@@ -27,18 +27,7 @@ const auth = (req, res, next) => {
   next();
 };
 
-// ROUTE: Get companies for ContactForm drop-down
-app.get('/api/companies', (req, res, next) => {
-  client.query(`
-    SELECT *
-    FROM companies
-    ORDER BY companies.name
-  `
-  ).then(result => {
-    res.send(result.rows);
-  })
-    .catch(next);
-});
+////////////////// EVENTS //////////////////////////
 
 // ROUTE:  Get the events for a user
 app.get('/api/events/:id', auth, (req, res, next) => {
@@ -111,6 +100,68 @@ app.put('/api/events/:id', auth, (req, res, next) => {
     .catch(next);
 });
 
+// ROUTE: Delete Event
+app.delete('/api/events/:id', auth, (req, res, next) => {
+  client.query(`
+    DELETE FROM contacts WHERE event_id=$1;
+  `,
+  [req.params.id]
+  ).then(() => {
+    client.query(`
+      DELETE FROM events WHERE id=$1;
+    `,
+    [req.params.id]
+    ).then(() => {
+      res.send({ removed: true });
+    })
+      .catch(next);
+  });
+});
+
+////////////// CONTACTS ////////////////////////
+
+// ROUTE:  Get the contacts for a user
+app.get('/api/contacts/:id', auth, (req, res, next) => {
+  client.query(`
+    SELECT contacts.id, 
+      contacts.name, 
+      contacts.email,
+      contacts.other,
+      contacts.notes,
+      contacts.created,
+      contacts.user_id AS "userId",
+      companies.name AS "companyName",
+      contacts.event_id AS "eventId",
+      events.name AS "eventName",
+      events.event_date AS "eventDate"
+    FROM contacts
+    JOIN events ON contacts.event_id = events.id
+    JOIN companies ON contacts.company_id = companies.id
+    WHERE contacts.user_id = $1
+    ORDER BY events.event_date DESC
+    `,
+  [req.params.id]
+  ).then(result => {
+    res.send(result.rows);
+  })
+    .catch(next);
+});
+
+////////////// COMPANIES ////////////////////////
+
+// ROUTE: Get companies for ContactForm drop-down
+app.get('/api/companies', (req, res, next) => {
+  client.query(`
+    SELECT *
+    FROM companies
+    ORDER BY companies.name
+  `
+  ).then(result => {
+    res.send(result.rows);
+  })
+    .catch(next);
+});
+
 //ROUTE: Add Company
 app.post('/api/companies', (req, res, next) => {
   const body = req.body;
@@ -130,23 +181,7 @@ app.post('/api/companies', (req, res, next) => {
     .catch(next);
 });
 
-// ROUTE: Delete Event
-app.delete('/api/events/:id', auth, (req, res, next) => {
-  client.query(`
-    DELETE FROM contacts WHERE event_id=$1;
-  `,
-  [req.params.id]
-  ).then(() => {
-    client.query(`
-      DELETE FROM events WHERE id=$1;
-    `,
-    [req.params.id]
-    ).then(() => {
-      res.send({ removed: true });
-    })
-      .catch(next);
-  });
-});
+//////////  SIGNIN AND SIGNUP ///////////////////
 
 // ROUTE:  User Sign-Up
 app.post('/api/auth/signup', (req, res, next) => {
@@ -208,6 +243,8 @@ app.post('/api/auth/signin', (req, res, next) => {
     })
     .catch(next);
 });
+
+///////////// ERROR HANDLER ////////////////////////////
 
 // must use all 4 parameters so express "knows" this is custom error handler!
 // eslint-disable-next-line
