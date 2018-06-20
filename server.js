@@ -28,13 +28,12 @@ const auth = (req, res, next) => {
 };
 
 // ROUTE: Get companies for ContactForm dropdown
-app.get('api/companies/:id', auth, (req, res, next) => {
+app.get('/api/companies', (req, res, next) => {
   client.query(`
-    SELECT companies.id,
-      companies.name,
+    SELECT *
+    FROM companies
     ORDER BY companies.name
-  `,
-  [req.params.id]
+  `
   ).then(result => {
     res.send(result.rows);
   })
