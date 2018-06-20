@@ -62,7 +62,31 @@ app.get('/api/events/:id', auth, (req, res, next) => {
     .catch(next);
 });
 
-// ROUTE: Delete event
+// ROUTE: Add Event
+app.post('/api/events', (req, res, next) => {
+  const body = req.body;
+  const name = body.name;
+  const eventDate = body.eventDate;
+  const description = body.description;
+
+  if(!name || !eventDate) {
+    return next('Event name & date required');
+  }
+
+  client.query(`
+    INSERT INTO events (user_id, name, event_date, description)
+    VALUES ($1, $2, $3, $4)
+    RETURNING *, user_id as "userId", event_date as "eventDate";
+  `,
+  [body.userId, name, eventDate, description]
+  ).then(result => {
+    res.send(result.rows[0]);
+  })
+    .catch(next);
+});
+
+
+// ROUTE: Delete Event
 app.delete('/api/events/:id', auth, (req, res, next) => {
   client.query(`
     DELETE FROM contacts WHERE event_id=$1;
