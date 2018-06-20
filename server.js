@@ -63,7 +63,7 @@ app.get('/api/events/:id', auth, (req, res, next) => {
 });
 
 // ROUTE: Add Event
-app.post('/api/events', (req, res, next) => {
+app.post('/api/events', auth, (req, res, next) => {
   const body = req.body;
   const name = body.name;
   const eventDate = body.eventDate;
