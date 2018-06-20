@@ -115,7 +115,7 @@ app.post('/api/auth/signup', (req, res, next) => {
 });
 
 // ROUTE: User Sign-In
-app.post('/api/auth/signin', auth, (req, res, next) => {
+app.post('/api/auth/signin', (req, res, next) => {
   const body = req.body;
   const email = body.email;
   const password = body.password;
@@ -134,7 +134,7 @@ app.post('/api/auth/signin', auth, (req, res, next) => {
     .then(results => {
       const row = results.rows[0];
       if(!row || row.password !== password) {
-        throw new Error('Email and/or password not found');
+        next('Email and/or password not found');
       }
       res.send({ userId: row.id });
     })
