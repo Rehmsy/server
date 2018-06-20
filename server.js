@@ -16,8 +16,33 @@ app.use(express.static('public'));
 // connect to the database
 const client = require('./db-client');
 
+const auth = (req, res, next) => {
+  const id = req.get('Authorization');
+  if(!id || isNaN(id)) {
+    next('No Authentication');
+    return;
+  }
+
+  req.userId = +id;
+  next();
+};
+
+// ROUTE: Get companies for ContactForm dropdown
+app.get('api/companies/:id', auth, (req, res, next) => {
+  client.query(`
+    SELECT companies.id,
+      companies.name,
+    ORDER BY companies.name
+  `,
+  [req.params.id]
+  ).then(result => {
+    res.send(result.rows);
+  })
+    .catch(next);
+});
+
 // ROUTE:  Get the events for a user
-app.get('/api/events/:id', (req, res, next) => {
+app.get('/api/events/:id', auth, (req, res, next) => {
   client.query(`
     SELECT events.id, 
         events.user_id as "userId", 
@@ -39,7 +64,7 @@ app.get('/api/events/:id', (req, res, next) => {
 });
 
 // ROUTE: Delete event
-app.delete('/api/events/:id', (req, res, next) => {
+app.delete('/api/events/:id', auth, (req, res, next) => {
   client.query(`
     DELETE FROM contacts WHERE event_id=$1;
   `,
@@ -91,7 +116,7 @@ app.post('/api/auth/signup', (req, res, next) => {
 });
 
 // ROUTE: User Sign-In
-app.post('/api/auth/signin', (req, res, next) => {
+app.post('/api/auth/signin', auth, (req, res, next) => {
   const body = req.body;
   const email = body.email;
   const password = body.password;
