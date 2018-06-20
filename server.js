@@ -85,6 +85,24 @@ app.post('/api/events', auth, (req, res, next) => {
     .catch(next);
 });
 
+//ROUTE: Add Company
+app.post('/api/companies', (req, res, next) => {
+  const body = req.body;
+  const name = body.name;
+  if(!name) {
+    return next('Name required');  
+  }
+  client.query(`
+  INSERT INTO companies (name)
+  VALUES ($1)
+  RETURNING id as "companyId", name;
+  `,
+  [name]
+  ).then(result => {
+    res.send(result.rows[0]);
+  })
+    .catch(next);
+});
 
 // ROUTE: Delete Event
 app.delete('/api/events/:id', auth, (req, res, next) => {
