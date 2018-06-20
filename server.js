@@ -85,6 +85,32 @@ app.post('/api/events', auth, (req, res, next) => {
     .catch(next);
 });
 
+// ROUTE: Update Event
+app.put('/api/events/:id', auth, (req, res, next) => {
+  const body = req.body;
+  const name = body.name;
+  const eventDate = body.eventDate;
+
+  if(!name || !eventDate) {
+    return next('Event name & date required');
+  }
+
+  client.query(`
+    UPDATE events
+    SET
+      name = $1,
+      event_date = $2,
+      description = $3,
+    WHERE id = $4
+    RETURNING id AS "eventId", name, event_date AS "eventDate", description;
+  `,
+  [name, eventDate, body.description, req.params.id]
+  ).then(result => {
+    res.send(result.rows[0]);
+  })
+    .catch(next);
+});
+
 //ROUTE: Add Company
 app.post('/api/companies', (req, res, next) => {
   const body = req.body;
