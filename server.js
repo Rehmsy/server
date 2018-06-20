@@ -136,11 +136,20 @@ app.post('/api/auth/signin', (req, res, next) => {
       if(!row || row.password !== password) {
         next('Email and/or password not found');
       }
-      res.send({ userId: row.id });
+      res.send({ userId: row.id, email: row.email });
     })
     .catch(next);
 });
 
+// must use all 4 parameters so express "knows" this is custom error handler!
+// eslint-disable-next-line
+app.use((err, req, res, next) => {
+  console.log('\n \n***SERVER ERROR***\n \n', err);
+  let message = 'INTERNAL SERVER ERROR';
+  if(err.message) message = err.message;
+  else if(typeof err === 'string') message = err;
+  res.status(500).send({ message });
+});
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => console.log('server running on port', PORT));
