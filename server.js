@@ -27,7 +27,7 @@ const auth = (req, res, next) => {
   next();
 };
 
-// ROUTE: Get companies for ContactForm dropdown
+// ROUTE: Get companies for ContactForm drop-down
 app.get('/api/companies', (req, res, next) => {
   client.query(`
     SELECT *
