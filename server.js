@@ -27,6 +27,27 @@ const auth = (req, res, next) => {
 };
 
 ////////////////// EVENTS //////////////////////////
+// ROUTE: Get an event
+app.get('/api/events/event/:id', auth, (req, res, next) => {
+  client.query(`
+  SELECT events.id as "eventId", 
+      events.user_id as "userId", 
+      events.name, 
+      events.event_date as "eventDate", 
+      events.description, 
+  COUNT(contacts.id) as count
+  FROM events
+  LEFT JOIN contacts on events.id = contacts.event_id
+  WHERE events.id = $1
+  GROUP BY events.id
+  ORDER BY events.event_date
+  `,
+  [req.params.id]
+  ).then(result => {
+    res.send(result.rows[0]);
+  })
+    .catch(next);
+});
 
 // ROUTE:  Get the events for a user
 app.get('/api/events/:id', auth, (req, res, next) => {
