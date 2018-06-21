@@ -147,6 +147,64 @@ app.get('/api/contacts/:id', auth, (req, res, next) => {
     .catch(next);
 });
 
+// ROUTE: Add Contact
+app.post('/api/contacts', auth, (req, res, next) => {
+  const body = req.body;
+  const name = body.name;
+
+  if(!name) {
+    return next('Contact name required');
+  }
+
+  client.query(`
+  INSERT INTO contacts (
+    name, 
+    email, 
+    other,
+    notes,
+    user_id,
+    event_id,
+    company_id
+)
+    VALUES ($1, $2, $3, $4, $5, $6, $7)
+    RETURNING name, email, other, notes, created,
+    id AS "contactId", 
+    user_id AS "userId", 
+    event_id AS "eventId", 
+    company_id AS "companyId";
+  `,
+  [name, body.email, body.other, body.notes, body.userId, body.eventId, body.companyId]
+  ).then(result => {
+    res.send(result.rows[0]);
+  })
+    .catch(next);
+});
+
+// ROUTE: Update contact
+// app.put('/api/contacts/:id', auth, (req, res, next) => {
+//   const body = req.body;
+//   const name = body.name;
+
+//   if(!name) {
+//     return next('Contact name required');
+//   }
+
+//   client.query(`
+//     UPDATE events
+//     SET
+//       name = $1,
+//       event_date = $2,
+//       description = $3,
+//     WHERE id = $4
+//     RETURNING id AS "eventId", name, event_date AS "eventDate", description;
+//   `,
+//   [name, eventDate, body.description, req.params.id]
+//   ).then(result => {
+//     res.send(result.rows[0]);
+//   })
+//     .catch(next);
+// });
+
 ////////////// COMPANIES ////////////////////////
 
 // ROUTE: Get companies for ContactForm drop-down
