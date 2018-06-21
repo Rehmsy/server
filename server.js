@@ -31,7 +31,7 @@ const auth = (req, res, next) => {
 // ROUTE:  Get the events for a user
 app.get('/api/events/:id', auth, (req, res, next) => {
   client.query(`
-    SELECT events.id, 
+    SELECT events.id as "eventId", 
         events.user_id as "userId", 
         events.name, 
         events.event_date as "eventDate", 
@@ -122,7 +122,7 @@ app.delete('/api/events/:id', auth, (req, res, next) => {
 // ROUTE:  Get the contacts for a user
 app.get('/api/contacts/user/:id', auth, (req, res, next) => {
   client.query(`
-    SELECT contacts.id, 
+    SELECT contacts.id as "contactId", 
       contacts.name, 
       contacts.email,
       contacts.other,
@@ -149,7 +149,7 @@ app.get('/api/contacts/user/:id', auth, (req, res, next) => {
 // ROUTE:  Get the contacts for an event
 app.get('/api/contacts/event/:id', auth, (req, res, next) => {
   client.query(`
-    SELECT contacts.id, 
+    SELECT contacts.id as "contactId", 
       contacts.name, 
       contacts.email,
       contacts.other,
