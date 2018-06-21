@@ -27,6 +27,27 @@ const auth = (req, res, next) => {
 };
 
 ////////////////// EVENTS //////////////////////////
+// ROUTE: Get an event
+app.get('/api/events/event/:id', auth, (req, res, next) => {
+  client.query(`
+  SELECT events.id as "eventId", 
+      events.user_id as "userId", 
+      events.name, 
+      events.event_date as "eventDate", 
+      events.description, 
+  COUNT(contacts.id) as count
+  FROM events
+  LEFT JOIN contacts on events.id = contacts.event_id
+  WHERE events.id = $1
+  GROUP BY events.id
+  ORDER BY events.event_date
+  `,
+  [req.params.id]
+  ).then(result => {
+    res.send(result.rows[0]);
+  })
+    .catch(next);
+});
 
 // ROUTE:  Get the events for a user
 app.get('/api/events/:id', auth, (req, res, next) => {
@@ -118,6 +139,29 @@ app.delete('/api/events/:id', auth, (req, res, next) => {
 });
 
 ////////////// CONTACTS ////////////////////////
+// ROUTE: Get a contact
+app.get('/api/contacts/:id', auth, (req, res, next) => {
+  client.query(`
+  SELECT contacts.id as "contactId", 
+    contacts.name, 
+    contacts.email,
+    contacts.other,
+    contacts.notes,
+    contacts.created,
+    contacts.user_id AS "userId",
+    companies.name AS "companyName",
+    companies.id AS "companyId",
+    contacts.event_id AS "eventId"
+  FROM contacts
+  JOIN companies ON contacts.company_id = companies.id
+  WHERE contacts.id = $1
+  `,
+  [req.params.id]
+  ).then(result => {
+    res.send(result.rows[0]);
+  })
+    .catch(next);
+});
 
 // ROUTE:  Get the contacts for a user
 app.get('/api/contacts/user/:id', auth, (req, res, next) => {
