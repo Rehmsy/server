@@ -74,8 +74,7 @@ app.post('/api/events', auth, (req, res, next) => {
 });
 
 // ROUTE: Update Event
-app.put('/api/events/:id', (req, res, next) => {
-  //app.put('/api/events/:id', auth, (req, res, next) => {
+app.put('/api/events/:id', auth, (req, res, next) => {
   const body = req.body;
   const name = body.name;
   const eventDate = body.eventDate;
@@ -101,8 +100,7 @@ app.put('/api/events/:id', (req, res, next) => {
 });
 
 // ROUTE: Delete Event
-app.delete('/api/events/:id', (req, res, next) => {
-//app.delete('/api/events/:id', auth, (req, res, next) => {
+app.delete('/api/events/:id', auth, (req, res, next) => {
   client.query(`
     DELETE FROM contacts WHERE event_id=$1;
   `,
@@ -149,8 +147,7 @@ app.get('/api/contacts/user/:id', auth, (req, res, next) => {
 });
 
 // ROUTE:  Get the contacts for an event
-//app.get('/api/contacts/event/:id', auth, (req, res, next) => {
-app.get('/api/contacts/event/:id', (req, res, next) => {
+app.get('/api/contacts/event/:id', auth, (req, res, next) => {
   client.query(`
     SELECT contacts.id, 
       contacts.name, 
