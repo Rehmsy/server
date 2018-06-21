@@ -22,7 +22,6 @@ const auth = (req, res, next) => {
     next('No Authentication');
     return;
   }
-
   req.userId = +id;
   next();
 };
@@ -75,7 +74,8 @@ app.post('/api/events', auth, (req, res, next) => {
 });
 
 // ROUTE: Update Event
-app.put('/api/events/:id', auth, (req, res, next) => {
+app.put('/api/events/:id', (req, res, next) => {
+  //app.put('/api/events/:id', auth, (req, res, next) => {
   const body = req.body;
   const name = body.name;
   const eventDate = body.eventDate;
@@ -89,7 +89,7 @@ app.put('/api/events/:id', auth, (req, res, next) => {
     SET
       name = $1,
       event_date = $2,
-      description = $3,
+      description = $3
     WHERE id = $4
     RETURNING id AS "eventId", name, event_date AS "eventDate", description;
   `,
@@ -101,7 +101,8 @@ app.put('/api/events/:id', auth, (req, res, next) => {
 });
 
 // ROUTE: Delete Event
-app.delete('/api/events/:id', auth, (req, res, next) => {
+app.delete('/api/events/:id', (req, res, next) => {
+//app.delete('/api/events/:id', auth, (req, res, next) => {
   client.query(`
     DELETE FROM contacts WHERE event_id=$1;
   `,
@@ -237,6 +238,18 @@ app.put('/api/contacts/:id', auth, (req, res, next) => {
   [name, body.email, body.other, body.notes, body.userId, body.eventId, body.companyId, req.params.id]
   ).then(result => {
     res.send(result.rows[0]);
+  })
+    .catch(next);
+});
+
+// ROUTE: Delete contact
+app.delete('/api/contacts/:id', auth, (req, res, next) => {
+  client.query(`
+    delete from contacts where id=$1;
+  `,
+  [req.params.id]
+  ).then(() => {
+    res.send({ removed: true });
   })
     .catch(next);
 });
