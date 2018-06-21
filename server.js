@@ -38,7 +38,7 @@ app.get('/api/events/:id', auth, (req, res, next) => {
         events.description, 
     COUNT(contacts.id) as count
     FROM events
-    JOIN contacts on events.id = contacts.event_id
+    LEFT JOIN contacts on events.id = contacts.event_id
     WHERE events.user_id = $1
     GROUP BY events.id
     ORDER BY events.event_date
