@@ -121,7 +121,7 @@ app.delete('/api/events/:id', auth, (req, res, next) => {
 ////////////// CONTACTS ////////////////////////
 
 // ROUTE:  Get the contacts for a user
-app.get('/api/contacts/:id', auth, (req, res, next) => {
+app.get('/api/contacts/user/:id', auth, (req, res, next) => {
   client.query(`
     SELECT contacts.id, 
       contacts.name, 
@@ -139,6 +139,34 @@ app.get('/api/contacts/:id', auth, (req, res, next) => {
     JOIN companies ON contacts.company_id = companies.id
     WHERE contacts.user_id = $1
     ORDER BY events.event_date DESC
+    `,
+  [req.params.id]
+  ).then(result => {
+    res.send(result.rows);
+  })
+    .catch(next);
+});
+
+// ROUTE:  Get the contacts for an event
+//app.get('/api/contacts/event/:id', auth, (req, res, next) => {
+app.get('/api/contacts/event/:id', (req, res, next) => {
+  client.query(`
+    SELECT contacts.id, 
+      contacts.name, 
+      contacts.email,
+      contacts.other,
+      contacts.notes,
+      contacts.created,
+      contacts.user_id AS "userId",
+      companies.name AS "companyName",
+      contacts.event_id AS "eventId",
+      events.name AS "eventName",
+      events.event_date AS "eventDate"
+    FROM contacts
+    JOIN events ON contacts.event_id = events.id
+    JOIN companies ON contacts.company_id = companies.id
+    WHERE contacts.event_id = $1
+    ORDER BY contacts.name DESC
     `,
   [req.params.id]
   ).then(result => {
@@ -181,8 +209,7 @@ app.post('/api/contacts', auth, (req, res, next) => {
 });
 
 // ROUTE: Update contact
-//app.put('/api/contacts/:id', auth, (req, res, next) => {
-app.put('/api/contacts/:id', (req, res, next) => {
+app.put('/api/contacts/:id', auth, (req, res, next) => {
   const body = req.body;
   const name = body.name;
 
