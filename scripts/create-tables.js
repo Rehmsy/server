@@ -27,7 +27,7 @@ client.query(`
       created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
       user_id INTEGER NOT NULL REFERENCES users(id),
       event_id INTEGER NOT NULL REFERENCES events(id),
-      company_id INTEGER NOT NULL REFERENCES companies(id)
+      company_id INTEGER REFERENCES companies(id)
     )
 `)
   .then(

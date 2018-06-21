@@ -64,7 +64,7 @@ app.post('/api/events', auth, (req, res, next) => {
   client.query(`
     INSERT INTO events (user_id, name, event_date, description)
     VALUES ($1, $2, $3, $4)
-    RETURNING *, user_id as "userId", event_date as "eventDate";
+    RETURNING name, description, id as "eventId", user_id as "userId", event_date as "eventDate";
   `,
   [body.userId, name, eventDate, description]
   ).then(result => {
