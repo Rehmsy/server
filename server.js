@@ -1,19 +1,12 @@
 require('dotenv').config();
-
-// basic express app
 const express = require('express');
 const app = express();
-
-// middleware (cors and read json body)
 const cors = require('cors');
-//const morgan = require('morgan');
-// app.use(morgan('dev'));
+
 app.use(cors());
 app.use(express.json());
-// server files in public directory
 app.use(express.static('public'));
 
-// connect to the database
 const client = require('./db-client');
 
 const auth = (req, res, next) => {
@@ -394,7 +387,6 @@ app.post('/api/auth/signin', (req, res, next) => {
 
 ///////////// ERROR HANDLER ////////////////////////////
 
-// must use all 4 parameters so express "knows" this is custom error handler!
 // eslint-disable-next-line
 app.use((err, req, res, next) => {
   console.log('\n \n***SERVER ERROR***\n \n', err);
