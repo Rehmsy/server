@@ -2,9 +2,5 @@
   {
     "email": "login1@email.com",
     "password": "password"
-  },
-  {
-    "email": "login2@email.com",
-    "password": "password"
   }
 ]
