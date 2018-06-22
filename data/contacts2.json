@@ -1,34 +1,191 @@
 [
   {
-    "name": "Charlie Skinner",
-    "email": "charlie@hbosthenewsroom.com",
-    "notes": "One of the funniest guys in the room.",
+    "name": "Robin Hialto",
+    "email": "rhialto@yahoo.ca",
+    "notes": "",
+    "user_id": 1,
+    "event_id": 1,
+    "company_id": 1
+  },
+  {
+    "name": "Pete Wilson",
+    "email": "wilsonpm@att.net",
+    "notes": "",
+    "user_id": 1,
+    "event_id": 1,
+    "company_id": 9
+  },
+  {
+    "name": "Niegel Wiger",
+    "email": "nwiger@yahoo.ca",
+    "notes": "",
+    "user_id": 1,
+    "event_id": 1,
+    "company_id": 1
+  },
+  {
+    "name": "Mohammed Munjal",
+    "email": "munjal@me.com",
+    "notes": "",
+    "user_id": 1,
+    "event_id": 1,
+    "company_id": 8
+  },
+  {
+    "name": "Patrick Gilmoure",
+    "email": "gilmoure@outlook.com",
+    "notes": "",
+    "user_id": 1,
+    "event_id": 1,
+    "company_id": 6
+  },
+  {
+    "name": "Greg Will",
+    "email": "willg@live.com",
+    "notes": "",
     "user_id": 1,
     "event_id": 1,
     "company_id": 3
   },
   {
-    "name": "Louis The Dog",
-    "email": "louisthedog@someemailaddress.com",
-    "notes": "Woof Woof",
+    "name": "Sirius Syphus",
+    "email": "sisyphus@sbcglobal.net",
+    "notes": "",
     "user_id": 1,
     "event_id": 2,
-    "company_id": 1
-  },
-  {
-    "name": "Journey The Dog",
-    "email": "journeythedog@someemailaddress.com",
-    "notes": "Woof woof woof",
-    "user_id": 2,
-    "event_id": 3,
-    "company_id": 1
-  },
-  {
-    "name": "Charizard",
-    "email": "charizard@someemailaddress.com",
-    "notes": "Bit of a pyro",
-    "user_id": 2,
-    "event_id": 4,
     "company_id": 2
+  },
+  {
+    "name": "William Kostas",
+    "email": "kostas@att.net",
+    "notes": "",
+    "user_id": 1,
+    "event_id": 2,
+    "company_id": 13
+    },
+    {
+    "name": "Rita Fisher",
+    "email": "rfisher@comcast.net",
+    "notes": "",
+    "user_id": 1,
+    "event_id": 2,
+    "company_id": 18
+  },
+  {
+    "name": "Pedram Barjam",
+    "email": "barjam@aol.com",
+    "notes": "",
+    "user_id": 1,
+    "event_id": 3,
+    "company_id": 11
+  },
+  {
+    "name": "Michelle Dielman",
+    "email": "mdielmann@aol.com",
+    "notes": "",
+    "user_id": 1,
+    "event_id": 3,
+    "company_id": 10
+  },
+  {
+    "name": "Dahlia Hyde",
+    "email": "drhyde@msn.com",
+    "notes": "",
+    "user_id": 1,
+    "event_id": 3,
+    "company_id": 8
+  },  {
+    "name": "Mei Ling Xiao",
+    "email": "mxiao@comcast.net",
+    "notes": "",
+    "user_id": 1,
+    "event_id": 3,
+    "company_id": 7
+  },
+  {
+    "name": "Jana Covey",
+    "email": "janacovey@optonline.net",
+    "notes": "",
+    "user_id": 1,
+    "event_id": 4,
+    "company_id": 6
+  },
+  {
+    "name": "Pailin Baveja",
+    "email": "baveja@verizon.net",
+    "notes": "",
+    "user_id": 1,
+    "event_id": 5,
+    "company_id": 6
+  },
+  {
+    "name": "Karen Stern",
+    "email": "stern@att.net",
+    "notes": "",
+    "user_id": 1,
+    "event_id": 6,
+    "company_id": 3
+  },  {
+    "name": "Sasha Riha",
+    "email": "sriha@yahoo.com",
+    "notes": "",
+    "user_id": 1,
+    "event_id": 7,
+    "company_id": 3
+  },
+  {
+    "name": "Haley Hiss",
+    "email": "hahiss@yahoo.ca",
+    "notes": "",
+    "user_id": 1,
+    "event_id": 7,
+    "company_id": 2
+  },
+  {
+    "name": "Anna Koblin",
+    "email": "akoblin@yahoo.com",
+    "notes": "",
+    "user_id": 1,
+    "event_id": 6,
+    "company_id": 2
+  },
+  {
+    "name": "Marco Arnane",
+    "email": "marnanel@att.net",
+    "notes": "",
+    "user_id": 1,
+    "event_id": 8,
+    "company_id": 3
+  },  {
+    "name": "Alejandro Rebenti",
+    "email": "arebenti@live.com",
+    "notes": "",
+    "user_id": 1,
+    "event_id": 7,
+    "company_id": 12
+  },
+  {
+    "name": "Martin Lawrence",
+    "email": "mlawrence@email.com",
+    "notes": "",
+    "user_id": 1,
+    "event_id": 7,
+    "company_id": 13
+  },
+  {
+    "name": "Kristopher Kannan",
+    "email": "kannan@msn.com",
+    "notes": "",
+    "user_id": 1,
+    "event_id": 2,
+    "company_id": 14
+  },
+  {
+    "name": "Jamal Washington",
+    "email": "jwashington@gmail.com",
+    "notes": "",
+    "user_id": 1,
+    "event_id": 3,
+    "company_id": 15
   }
 ]

@@ -6,45 +6,45 @@
     "user_id": 1
   },
   {
-    "event_date": "2018-06-19",
-    "name": "Network Your Network",
-    "description": "Some networking event that aims to network your network through networking.",
+    "event_date": "2018-07-16",
+    "name": "NewTech PDX - Blockchain",
+    "description": "Portland's premier ongoing monthly tech event. Events happen on the 3rd Monday evening of every month.",
     "user_id": 1
   },
   {
     "event_date": "2018-07-10",
-    "name": "Women Who Code",
-    "description": "An organization that envisions a world where women are proportionally represented as technical leaders, executives, founders, VCs, board members, and software engineers.",
+    "name": "BBPDX's 2nd Annual Summer Social",
+    "description": "An opportunity to meet and network while enjoying a beautiful summer evening full of celebration, cocktails, and food from our new member Bamboo Sushi.",
     "user_id": 1
   },
   {
-    "event_date": "2018-06-19",
-    "name": "Network Your Network",
-    "description": "Some networking event that aims to network your network through networking.",
+    "event_date": "2018-07-26",
+    "name": "PDX Women In Tech (PDXWIT)",
+    "description": "Participants will discover their own personal obstacles and identify and practice strategies to engage in culture change.",
     "user_id": 1
   },
   {
-    "event_date": "2018-07-20",
+    "event_date": "2018-08-20",
     "name": "Portland Code Project",
     "description": "Your basic coding project here in Portland.",
-    "user_id": 2
+    "user_id": 1
   },
   {
     "event_date": "2018-09-21",
     "name": "Code Love - A Networking Event",
     "description": "A local group of enthusiasts who aim to share their love for coding in the Portland area.",
-    "user_id": 2
+    "user_id": 1
   },
   {
-    "event_date": "2018-07-20",
-    "name": "Portland Code Project",
-    "description": "Your basic coding project here in Portland.",
-    "user_id": 2
+    "event_date": "2018-10-20",
+    "name": "Find Your Network",
+    "description": "Workshop to help you identify what networks best suit your passions, chosen career, and more.",
+    "user_id": 1
   },
   {
     "event_date": "2018-09-21",
-    "name": "Code Love - A Networking Event",
-    "description": "A local group of enthusiasts who aim to share their love for coding in the Portland area.",
-    "user_id": 2
+    "name": "Job Fair: Employers using Vue.js",
+    "description": "A small event focused on matching select companies with developers experienced in Vue.js.",
+    "user_id": 1
   }
 ]
