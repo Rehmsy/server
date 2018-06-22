@@ -181,7 +181,7 @@ app.get('/api/contacts/user/:id', auth, (req, res, next) => {
     JOIN events ON contacts.event_id = events.id
     JOIN companies ON contacts.company_id = companies.id
     WHERE contacts.user_id = $1
-    ORDER BY events.event_date DESC
+    ORDER BY contacts.created DESC
     `,
   [req.params.id]
   ).then(result => {
