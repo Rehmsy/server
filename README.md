@@ -7,7 +7,8 @@ This mobile-enabled web application provides a quick way to create, store, revie
 
 ## Deployment
 
-This application is currently available at https://alchemy-connect.herokuapp.com/#/ and is intended to be used on a mobile device.
+This application is currently available at https://alchemy-connect.herokuapp.com/#/ and is intended to be used on mobile devices.
+
 
 To run this application locally: 
 1. Download files from both repositories (described below) and place them in a single folder.   
