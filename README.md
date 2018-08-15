@@ -31,9 +31,9 @@ The code for this application is stored in two separate repositories.  This read
 * All http routes are defined in server.js.
 
 ## Contributors
-Carrie Carter
-Karen Painter
-Kevin Grayson
+Carrie Carter,
+Karen Painter,
+Kevin Grayson,
 [Sarah Rehmer](https://github.com/Rehmsy)
 
 ### App
