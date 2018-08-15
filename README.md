@@ -30,6 +30,12 @@ The code for this application is stored in two separate repositories.  This read
 * Scripts to create tables and populate tables are stored in server/scripts.
 * All http routes are defined in server.js.
 
+## Contributors
+Carrie Carter
+Karen Painter
+Kevin Grayson
+[Sarah Rehmer](https://github.com/Rehmsy)
+
 ### App
 
 File | Purpose
