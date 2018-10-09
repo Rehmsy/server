@@ -5,10 +5,9 @@ Make the most of your networking efforts
 
 This mobile-enabled web application provides a quick way to create, store, review, and edit information about networking events you've attended and the contacts you met there.
 
-## Deployment
+## To Run Locally
 
-This application is currently available at https://alchemy-connect.herokuapp.com/#/ and is intended to be used on mobile devices.
-
+This application is intended to be used on mobile devices.
 
 To run this application locally: 
 1. Download files from both repositories (described below) and place them in a single folder.   
